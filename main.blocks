@@ -15,4 +15,4 @@ b d 3 2 d 5 5 5 d d d 4 4 . . .
 b 5 5 5 5 d d 4 4 4 4 . . . . . 
 4 d d d 4 4 4 . . . . . . . . . 
 4 4 4 4 . . . . . . . . . . . . 
-`</field><data>{"commentRefs":[],"fieldData":{"img":")aUbOIO3Fg:)-62d`a1i"}}</data></shadow></value><value name="kind"><shadow type="spritekind" id="qa71-9ydJFbtMnsympS/"><field name="MEMBER">Player</field></shadow></value></block></value></block></next></block></statement></block></xml>
+`</field><data>{"commentRefs":[],"fieldData":{"img":")aUbOIO3Fg:)-62d`a1i"}}</data></shadow></value><value name="kind"><shadow type="spritekind" id="qa71-9ydJFbtMnsympS/"><field name="MEMBER">Player</field></shadow></value></block></value><next><block type="mixer_play_sound" id="$-u[*iT;Shagk{M%w/na"><field name="sound">music.baDing</field></block></next></block></next></block></statement></block></xml>

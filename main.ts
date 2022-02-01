@@ -17,3 +17,4 @@ let mySprite = sprites.create(img`
     4 d d d 4 4 4 . . . . . . . . . 
     4 4 4 4 . . . . . . . . . . . . 
     `, SpriteKind.Player)
+music.baDing.play()
