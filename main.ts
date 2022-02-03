@@ -1,3 +1,13 @@
+function keyAnswer (input2: number) {
+    if (input2 == randomNumber) {
+        game.over(true)
+    } else {
+        game.over(true)
+    }
+}
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, location) {
+    pause(1000)
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
     game.splash(randomNumber)
     pause(2000)
@@ -387,24 +397,6 @@ img`
     `
 ]
 randomNumber = randint(0, 10)
-let enemyy = sprites.create(img`
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Player)
 forever(function () {
     if (controller.left.isPressed() || controller.down.isPressed()) {
         batHero.setImage(moveLeft._pickRandom())

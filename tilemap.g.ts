@@ -152,7 +152,7 @@ namespace myTiles {
 2 . 2 2 2 . 2 2 2 . . 2 . 2 . 2 
 2 . . . 2 . 2 . 2 . 2 2 2 2 . 2 
 2 . 2 . . . 2 . . . . . . . . 2 
-2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+2 2 2 2 . 2 2 2 2 2 2 2 2 2 2 2 
 `, [myTiles.transparency16,myTiles.tile2,myTiles.tile3,myTiles.tile4,myTiles.tile6,myTiles.tile1,myTiles.tile5,myTiles.tile8,myTiles.tile9], TileScale.Sixteen);
         }
         return null;
