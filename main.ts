@@ -2,10 +2,11 @@ function keyAnswer (input2: number) {
     if (input2 == randomNumber) {
         game.over(true)
     } else {
-        game.over(true)
+        game.over(false)
     }
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, location) {
+    keyAnswer(game.askForNumber("", 1))
     pause(1000)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
