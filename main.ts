@@ -18,9 +18,10 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, ot
         . . . . 4 4 4 4 4 4 . . . . . . 
         `, SpriteKind.Projectile)
     tiles.placeOnRandomTile(key, assets.tile`myTile6`)
-    game.splash("")
+    game.splash(randomNumber)
 })
 let key: Sprite = null
+let randomNumber = 0
 scene.setBackgroundImage(img`
     dddddddddddddddddddddddddddddddddddddddddddddddddddddddddbdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
     dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
@@ -143,7 +144,7 @@ scene.setBackgroundImage(img`
     dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
     dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
     `)
-let mySprite = sprites.create(img`
+let batHero = sprites.create(img`
     . . f f f . . . . . . . . f f f 
     . f f c c . . . . . . f c b b c 
     f f c c . . . . . . f c b b c . 
@@ -161,6 +162,7 @@ let mySprite = sprites.create(img`
     . . f b b b b b b c f . . . . . 
     . . . f f f f f f f . . . . . . 
     `, SpriteKind.Player)
+controller.moveSprite(batHero)
 tiles.setTilemap(tilemap`level1`)
 let list = [
 img`
@@ -272,6 +274,7 @@ img`
     . . . . . . . . . . . . c c c c 
     `
 ]
+randomNumber = randint(0, 10)
 forever(function () {
 	
 })
