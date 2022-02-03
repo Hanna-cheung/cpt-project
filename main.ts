@@ -162,3 +162,11 @@ let mySprite = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Player)
 tiles.setTilemap(tilemap`level1`)
+let text_list = [
+"1",
+"2",
+"3",
+"4",
+"5",
+"6"
+]
