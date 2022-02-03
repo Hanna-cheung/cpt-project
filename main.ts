@@ -1,5 +1,6 @@
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
     game.splash(randomNumber)
+    pause(2000)
 })
 let randomNumber = 0
 scene.setBackgroundImage(img`
@@ -165,7 +166,7 @@ let batHero = sprites.create(img`
 scene.cameraFollowSprite(batHero)
 tiles.placeOnRandomTile(batHero, assets.tile`myTile3`)
 controller.moveSprite(batHero)
-let list = [
+let moveLeft = [
 img`
     . . f f f . . . . . . . . . . . 
     f f f c c . . . . . . . . f f f 
@@ -275,6 +276,116 @@ img`
     . . . . . . . . . . . . c c c c 
     `
 ]
+let moveRight = [
+img`
+    . . . . . . . . . . . f f f . . 
+    f f f . . . . . . . . c c f f f 
+    c b b c f . . . c c . . c c f f 
+    . c b b b f f c c 3 c c 3 c f f 
+    . c c c b b f c b 3 c b 3 b f f 
+    . c c b c b f c b b b b b b c . 
+    . c b b c b b c b b b b b b c . 
+    . c b c c c b b b 1 b b b 1 b c 
+    . . c c c c c b b b b b b b b c 
+    . . . c f b b b b c b b b c b f 
+    . . c c f b b b b 1 f f f 1 b f 
+    . . . . f c b b b b b b b b f . 
+    . . . . . f c b b b b b b f . . 
+    . . . . . . f f f f f f f . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `,
+img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . c c . . c c . . 
+    . . . . . . c c c 3 c c 3 c . . 
+    . . . . . c c c b 3 c b 3 b c . 
+    . . . . f f b b b b b b b b c . 
+    . . . . f f b b b b b b b b c c 
+    . . . f f f c b b 1 b b b 1 b c 
+    . . . f f f f b b b b b b b b c 
+    . . . b b b c c b c b b b c b f 
+    . . . c c c c f b 1 f f f 1 b f 
+    . . . c c b b f b b b b b b f . 
+    . . . c b b c c b b b b b f c c 
+    . . c b b c c f f f f f f c c c 
+    . c c c c c . . . . . . c c c . 
+    c c c c . . . . . . . c c c . . 
+    . . . . . . . . . . . . . . . . 
+    `,
+img`
+    . f f f . . . . . . . . f f f . 
+    . c b b c f . . . . . . . c f f 
+    . . c b b c f . . . . . . c c f 
+    . . c c c b f . . . . . . . f c 
+    . . c c b b f f . . . . . f f c 
+    . . c b b c b f c c . c c f f f 
+    . . c b c c b f c c c c c f f f 
+    . . . c c c b c b 3 c c 3 c f . 
+    . . . c c c c b b 3 c b 3 b c . 
+    . . . . c c b b b b b b b b c c 
+    . . . c f b b b b 1 b b b 1 b c 
+    . . c c f b b b b b b b b b b f 
+    . . . . f b b b b c b b b c b f 
+    . . . . f c b b b 1 f f f 1 f . 
+    . . . . . f c b b b b b b f . . 
+    . . . . . . f f f f f f f . . . 
+    `,
+img`
+    f f f . . . . . . . . f f f . . 
+    c b b c f . . . . . . c c f f . 
+    . c b b c f . . . . . . c c f f 
+    . c c c b f . . . . . . c f c f 
+    . c c b b c f . c c . c c f f f 
+    . c b b c b f c c 3 c c 3 c f f 
+    . c b c c b f c b 3 c b 3 b f f 
+    . . c c c b b c b 1 b b b 1 c . 
+    . . . c c c c b b 1 b b b 1 c . 
+    . . . . c c b b b b b b b b b c 
+    . . . . f b b b b c 1 f f 1 b c 
+    . . . c f b b b b f 1 f f 1 f f 
+    . . c c f b b b b f 2 2 2 2 f f 
+    . . . . f c b b b b 2 2 2 2 f . 
+    . . . . . f c b b b b b b f . . 
+    . . . . . . f f f f f f f . . . 
+    `,
+img`
+    . . . . . . . . . . . f f f . . 
+    f f f . . . . . . . . c c f f f 
+    c b b c f . . . c c . c c c f f 
+    . c b b b f f c c 3 c c 3 c f f 
+    . c c c b b f c b 3 c b 3 c f f 
+    . c c b c b f c b b b b b b c f 
+    . c b b c b b c b 1 b b b 1 c c 
+    . c b c c c b b b b b b b b b c 
+    . . c c c c c b b c 1 f f 1 b c 
+    . . . c f b b b b f 1 f f 1 f c 
+    . . . c f b b b b f f f f f f f 
+    . . c c f b b b b f 2 2 2 2 f f 
+    . . . . f c b b b 2 2 2 2 2 f . 
+    . . . . . f c b b b 2 2 2 f . . 
+    . . . . . . f f f f f f f . . . 
+    . . . . . . . . . . . . . . . . 
+    `,
+img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . c c . c c . . . 
+    . . . . . . c c c 3 c c 3 f . . 
+    . . . . . c c c b 3 c b 3 c f . 
+    . . . . f f b b b b b b b b c f 
+    . . . . f f b b b 1 b b b 1 c c 
+    . . . f f f c b b b b b b b b c 
+    . . . f f f f b b c 1 f f 1 b c 
+    . . . b b b c c b f 1 f f 1 f f 
+    . . . c c c c f b f f f f f f f 
+    . . c c c b b f b f 2 2 2 2 f f 
+    . . . c b b c c b 2 2 2 2 2 f . 
+    . . c b b c c f f b 2 2 2 f . . 
+    . c c c c c f f f f f f f . . . 
+    c c c c . . . . . . . . . . . . 
+    `
+]
 randomNumber = randint(0, 10)
 let enemyy = sprites.create(img`
     . . . . . . . . . . . . . . . . 
@@ -295,5 +406,9 @@ let enemyy = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Player)
 forever(function () {
-	
+    if (controller.left.isPressed() || controller.down.isPressed()) {
+        batHero.setImage(moveLeft._pickRandom())
+    } else if (controller.right.isPressed() || controller.up.isPressed()) {
+        batHero.setImage(moveRight._pickRandom())
+    }
 })
