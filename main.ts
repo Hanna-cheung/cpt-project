@@ -1,3 +1,26 @@
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
+    key = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . 5 5 5 5 5 . . . . . 
+        . . . . . . 5 4 4 4 4 . . . . . 
+        . . . . . . 5 4 . . . . . . . . 
+        . . . . . . 5 4 . . . . . . . . 
+        . . . . . . 5 4 . . . . . . . . 
+        . . . . . . 5 5 5 5 . . . . . . 
+        . . . . . . 5 4 4 4 . . . . . . 
+        . . . . . . 5 4 . . . . . . . . 
+        . . . . . . 5 4 . . . . . . . . 
+        . . . . 5 5 5 5 5 4 . . . . . . 
+        . . . . 5 4 4 4 5 4 . . . . . . 
+        . . 5 5 5 4 . . 5 5 5 4 . . . . 
+        . . 4 5 5 4 . . 5 5 4 4 . . . . 
+        . . . . 5 5 5 5 5 4 . . . . . . 
+        . . . . 4 4 4 4 4 4 . . . . . . 
+        `, SpriteKind.Projectile)
+    tiles.placeOnRandomTile(key, assets.tile`myTile6`)
+    game.splash("")
+})
+let key: Sprite = null
 scene.setBackgroundImage(img`
     dddddddddddddddddddddddddddddddddddddddddddddddddddddddddbdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
     dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
