@@ -1,26 +1,6 @@
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
-    key = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . 5 5 5 5 5 . . . . . 
-        . . . . . . 5 4 4 4 4 . . . . . 
-        . . . . . . 5 4 . . . . . . . . 
-        . . . . . . 5 4 . . . . . . . . 
-        . . . . . . 5 4 . . . . . . . . 
-        . . . . . . 5 5 5 5 . . . . . . 
-        . . . . . . 5 4 4 4 . . . . . . 
-        . . . . . . 5 4 . . . . . . . . 
-        . . . . . . 5 4 . . . . . . . . 
-        . . . . 5 5 5 5 5 4 . . . . . . 
-        . . . . 5 4 4 4 5 4 . . . . . . 
-        . . 5 5 5 4 . . 5 5 5 4 . . . . 
-        . . 4 5 5 4 . . 5 5 4 4 . . . . 
-        . . . . 5 5 5 5 5 4 . . . . . . 
-        . . . . 4 4 4 4 4 4 . . . . . . 
-        `, SpriteKind.Projectile)
-    tiles.placeOnRandomTile(key, assets.tile`myTile6`)
     game.splash(randomNumber)
 })
-let key: Sprite = null
 let randomNumber = 0
 scene.setBackgroundImage(img`
     dddddddddddddddddddddddddddddddddddddddddddddddddddddddddbdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
@@ -144,6 +124,26 @@ scene.setBackgroundImage(img`
     dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
     dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
     `)
+tiles.setTilemap(tilemap`level1`)
+let key = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . 5 5 5 5 5 . . . . . 
+    . . . . . . 5 4 4 4 4 . . . . . 
+    . . . . . . 5 4 . . . . . . . . 
+    . . . . . . 5 4 . . . . . . . . 
+    . . . . . . 5 4 . . . . . . . . 
+    . . . . . . 5 5 5 5 . . . . . . 
+    . . . . . . 5 4 4 4 . . . . . . 
+    . . . . . . 5 4 . . . . . . . . 
+    . . . . . . 5 4 . . . . . . . . 
+    . . . . 5 5 5 5 5 4 . . . . . . 
+    . . . . 5 4 4 4 5 4 . . . . . . 
+    . . 5 5 5 4 . . 5 5 5 4 . . . . 
+    . . 4 5 5 4 . . 5 5 4 4 . . . . 
+    . . . . 5 5 5 5 5 4 . . . . . . 
+    . . . . 4 4 4 4 4 4 . . . . . . 
+    `, SpriteKind.Projectile)
+tiles.placeOnRandomTile(key, assets.tile`myTile6`)
 let batHero = sprites.create(img`
     . . f f f . . . . . . . . f f f 
     . f f c c . . . . . . f c b b c 
@@ -162,8 +162,9 @@ let batHero = sprites.create(img`
     . . f b b b b b b c f . . . . . 
     . . . f f f f f f f . . . . . . 
     `, SpriteKind.Player)
+scene.cameraFollowSprite(batHero)
+tiles.placeOnRandomTile(batHero, assets.tile`myTile3`)
 controller.moveSprite(batHero)
-tiles.setTilemap(tilemap`level1`)
 let list = [
 img`
     . . f f f . . . . . . . . . . . 
@@ -275,6 +276,24 @@ img`
     `
 ]
 randomNumber = randint(0, 10)
+let enemyy = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.Player)
 forever(function () {
 	
 })
