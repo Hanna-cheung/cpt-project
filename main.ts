@@ -9,12 +9,13 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, l
     keyAnswer(game.askForNumber("", 1))
     pause(1000)
 })
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
-    game.splash(randomNumber)
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    for (let index = 0; index < 4; index++) {
+        game.splash(randomNumber)
+    }
     pause(2000)
 })
 let randomNumber = 0
-info.startCountdown(30)
 scene.setBackgroundImage(img`
     dddddddddddddddddddddddddddddddddddddddddddddddddddddddddbdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
     dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
@@ -155,7 +156,7 @@ let key = sprites.create(img`
     . . 4 5 5 4 . . 5 5 4 4 . . . . 
     . . . . 5 5 5 5 5 4 . . . . . . 
     . . . . 4 4 4 4 4 4 . . . . . . 
-    `, SpriteKind.Projectile)
+    `, SpriteKind.Enemy)
 tiles.placeOnRandomTile(key, assets.tile`myTile6`)
 let batHero = sprites.create(img`
     . . f f f . . . . . . . . f f f 
@@ -398,11 +399,14 @@ img`
     c c c c . . . . . . . . . . . . 
     `
 ]
-randomNumber = randint(0, 10)
+let list = [1, 2, 3]
+randomNumber = list._pickRandom()
 forever(function () {
     if (controller.left.isPressed() || controller.down.isPressed()) {
         batHero.setImage(moveLeft._pickRandom())
+        pause(200)
     } else if (controller.right.isPressed() || controller.up.isPressed()) {
         batHero.setImage(moveRight._pickRandom())
+        pause(200)
     }
 })
