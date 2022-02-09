@@ -1,19 +1,43 @@
-function keyAnswer (input2: number) {
-    if (input2 == randomNumber) {
+function keyAnswer2 (input2: number) {
+    for (let index = 0; index <= 2; index++) {
+        if (listOfDigits[index] == input2) {
+            correct += 1
+        }
+    }
+}
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, location) {
+    for (let index = 0; index < 3; index++) {
+        keyAnswer2(game.askForNumber("Input the digits in order", 1))
+        pause(1000)
+    }
+    if (correct == 3) {
         game.over(true)
     } else {
         game.over(false)
     }
+})
+function createKey () {
+    let index = 0
+    if (index == 0) {
+        digit1 = keyAnswer
+    } else if (index == 1) {
+        digit2 = keyAnswer
+    } else if (index == 2) {
+        digit3 = keyAnswer
+    }
 }
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, location) {
-    keyAnswer(game.askForNumber("", 1))
-    pause(1000)
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    for (let index = 0; index < 5; index++) {
+        game.splash("" + digit1 + digit2 + digit3)
+        pause(500)
+    }
 })
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
-    game.splash(randomNumber)
-    pause(2000)
-})
-let randomNumber = 0
+let keyAnswer = 0
+let correct = 0
+let digit3 = 0
+let digit2 = 0
+let digit1 = 0
+let listOfDigits: number[] = []
 scene.setBackgroundImage(img`
     dddddddddddddddddddddddddddddddddddddddddddddddddddddddddbdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
     dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
@@ -154,7 +178,7 @@ let key = sprites.create(img`
     . . 4 5 5 4 . . 5 5 4 4 . . . . 
     . . . . 5 5 5 5 5 4 . . . . . . 
     . . . . 4 4 4 4 4 4 . . . . . . 
-    `, SpriteKind.Projectile)
+    `, SpriteKind.Enemy)
 tiles.placeOnRandomTile(key, assets.tile`myTile6`)
 let batHero = sprites.create(img`
     . . f f f . . . . . . . . f f f 
@@ -397,11 +421,19 @@ img`
     c c c c . . . . . . . . . . . . 
     `
 ]
-randomNumber = randint(0, 10)
+let listOfKeys = [1, 2, 3]
+listOfDigits = [digit1, digit2, digit3]
+correct = 0
+for (let index = 0; index <= 2; index++) {
+    keyAnswer = listOfKeys._pickRandom()
+    createKey()
+}
 forever(function () {
     if (controller.left.isPressed() || controller.down.isPressed()) {
         batHero.setImage(moveLeft._pickRandom())
+        pause(200)
     } else if (controller.right.isPressed() || controller.up.isPressed()) {
         batHero.setImage(moveRight._pickRandom())
+        pause(200)
     }
 })
