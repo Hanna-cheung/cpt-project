@@ -1,6 +1,6 @@
 function keyAnswer (input2: number) {
     for (let index = 0; index <= arrayOfKeys.length - 1; index++) {
-        if (input2 == keyAnswerNumber) {
+        if (input2 == arrayOfKeys[index]) {
             match += 1
         }
     }
@@ -11,7 +11,7 @@ function keyAnswer (input2: number) {
     }
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, location) {
-    keyAnswer(game.askForNumber("What is the key?", 1))
+    keyAnswer(game.askForNumber("What is the key?", 3))
     pause(1000)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
@@ -409,15 +409,11 @@ img`
 ]
 // An array of numbers to be used for the key
 arrayOfKeys = [
-1,
-2,
-3,
-4,
-5,
-6,
-7,
-8,
-9
+231,
+345,
+312,
+998,
+235
 ]
 match = 0
 let randomKey = randint(0, arrayOfKeys.length - 1)
