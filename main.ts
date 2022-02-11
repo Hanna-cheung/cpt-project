@@ -1,4 +1,7 @@
 function keyAnswer (input2: number) {
+    for (let index = 0; index < 4; index++) {
+    	
+    }
     if (input2 == randomNumber) {
         game.over(true)
     } else {
@@ -11,7 +14,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, l
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     for (let index = 0; index < 4; index++) {
-        game.splash(randomNumber)
+        game.splash("" + randomNumber)
     }
     pause(2000)
 })
@@ -399,8 +402,8 @@ img`
     c c c c . . . . . . . . . . . . 
     `
 ]
-let list = [1, 2, 3]
-randomNumber = list._pickRandom()
+let keyList = [1, 2, 3]
+randomNumber = keyList._pickRandom()
 forever(function () {
     if (controller.left.isPressed() || controller.down.isPressed()) {
         batHero.setImage(moveLeft._pickRandom())
