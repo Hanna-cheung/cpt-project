@@ -1,19 +1,26 @@
 function keyAnswer (input2: number) {
-    if (input2 == randomNumber) {
+    for (let index = 0; index <= arrayOfKeys.length - 1; index++) {
+        if (input2 == arrayOfKeys[index]) {
+            match += 1
+        }
+    }
+    if (match == 1) {
         game.over(true)
     } else {
         game.over(false)
     }
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, location) {
-    keyAnswer(game.askForNumber("", 1))
+    keyAnswer(game.askForNumber("What is the key?", 1))
     pause(1000)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
-    game.splash(randomNumber)
+    game.splash(keyAnswerNumber)
     pause(2000)
 })
-let randomNumber = 0
+let keyAnswerNumber = 0
+let match = 0
+let arrayOfKeys: number[] = []
 info.startCountdown(30)
 scene.setBackgroundImage(img`
     dddddddddddddddddddddddddddddddddddddddddddddddddddddddddbdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
@@ -398,11 +405,26 @@ img`
     c c c c . . . . . . . . . . . . 
     `
 ]
-randomNumber = randint(0, 10)
+arrayOfKeys = [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9
+]
+match = 0
+let randomKey = randint(0, arrayOfKeys.length - 1)
+keyAnswerNumber = arrayOfKeys[randomKey]
 forever(function () {
     if (controller.left.isPressed() || controller.down.isPressed()) {
         batHero.setImage(moveLeft._pickRandom())
+        pause(200)
     } else if (controller.right.isPressed() || controller.up.isPressed()) {
         batHero.setImage(moveRight._pickRandom())
+        pause(200)
     }
 })
