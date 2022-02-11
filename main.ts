@@ -1,7 +1,7 @@
 // This function loops through arrayOfKeys to check the user input. If input is equal to the key answer, match is updated by 1, which would result in a winning game screen; otherwise, it would return a losing game screen.
 function keyAnswer (input2: number) {
-    for (let index = 0; index <= arrayOfKeys.length - 1; index++) {
-        if (input2 == arrayOfKeys[index]) {
+    for (let index = 0; index <= arrayOfVariables.length - 1; index++) {
+        if (input2 == arrayOfVariables[index]) {
             match += 1
         }
     }
@@ -13,17 +13,19 @@ function keyAnswer (input2: number) {
 }
 // Asks for user input through function keyAnswer after player batHero overlaps a selected tile
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, location) {
-    keyAnswer(game.askForNumber("What is the key?", 3))
+    keyAnswer(game.askForNumber("Input 1 of the numbers from the key", 1))
     pause(1000)
 })
 // Displays keyAnswerNumber on screen after the player batHero overlaps projectile key
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
-    game.splash("Your Key is: ", keyAnswerNumber)
+    game.splash("Your Key is: ", "" + key1 + key2 + key3)
     pause(2000)
 })
-let keyAnswerNumber = 0
 let match = 0
-let arrayOfKeys: number[] = []
+let key3 = 0
+let key2 = 0
+let key1 = 0
+let arrayOfVariables: number[] = []
 info.startCountdown(30)
 scene.setBackgroundImage(img`
     dddddddddddddddddddddddddddddddddddddddddddddddddddddddddbdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
@@ -411,17 +413,24 @@ img`
     `
 ]
 // An array of numbers to be used for the key
-arrayOfKeys = [
-231,
-345,
-312,
-998,
-235
+let arrayOfKeys = [
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9
 ]
+arrayOfVariables = [key1, key2, key3]
 match = 0
-let randomKey = randint(0, arrayOfKeys.length - 1)
+let randomKey = 0
 // Selects a random number from list arrayOfKeys using randomKey variable
-keyAnswerNumber = arrayOfKeys[randomKey]
+key1 = arrayOfKeys[arrayOfKeys._pickRandom()]
+key2 = arrayOfKeys[arrayOfKeys._pickRandom()]
+key3 = arrayOfKeys[arrayOfKeys._pickRandom()]
 // While left and down button is pressed, batHero sprite image changes to randomized images in moveLeft array. While right and up is pressed, batHero sprite image changes to randomized images in moveRight array
 forever(function () {
     if (controller.left.isPressed() || controller.down.isPressed()) {
