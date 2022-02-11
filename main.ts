@@ -21,11 +21,11 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, ot
     game.splash("Your Key is: ", "" + key1 + key2 + key3)
     pause(2000)
 })
-let match = 0
+let arrayOfVariables: number[] = []
 let key3 = 0
 let key2 = 0
 let key1 = 0
-let arrayOfVariables: number[] = []
+let match = 0
 info.startCountdown(30)
 scene.setBackgroundImage(img`
     dddddddddddddddddddddddddddddddddddddddddddddddddddddddddbdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
@@ -424,13 +424,11 @@ let arrayOfKeys = [
 8,
 9
 ]
-arrayOfVariables = [key1, key2, key3]
 match = 0
-let randomKey = 0
-// Selects a random number from list arrayOfKeys using randomKey variable
-key1 = arrayOfKeys[arrayOfKeys._pickRandom()]
-key2 = arrayOfKeys[arrayOfKeys._pickRandom()]
-key3 = arrayOfKeys[arrayOfKeys._pickRandom()]
+key1 = arrayOfKeys._pickRandom()
+key2 = arrayOfKeys._pickRandom()
+key3 = arrayOfKeys._pickRandom()
+arrayOfVariables = [key1, key2, key3]
 // While left and down button is pressed, batHero sprite image changes to randomized images in moveLeft array. While right and up is pressed, batHero sprite image changes to randomized images in moveRight array
 forever(function () {
     if (controller.left.isPressed() || controller.down.isPressed()) {
