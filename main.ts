@@ -1,6 +1,6 @@
 function keyAnswer (input2: number) {
     for (let index = 0; index <= arrayOfKeys.length - 1; index++) {
-        if (input2 == arrayOfKeys[index]) {
+        if (input2 == keyAnswerNumber) {
             match += 1
         }
     }
@@ -15,7 +15,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, l
     pause(1000)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
-    game.splash(keyAnswerNumber)
+    game.splash("Your Key is: ", keyAnswerNumber)
     pause(2000)
 })
 let keyAnswerNumber = 0
@@ -185,6 +185,7 @@ let batHero = sprites.create(img`
 scene.cameraFollowSprite(batHero)
 tiles.placeOnRandomTile(batHero, assets.tile`myTile3`)
 controller.moveSprite(batHero)
+// An array with multiple images of the sprite facing left
 let moveLeft = [
 img`
     . . f f f . . . . . . . . . . . 
@@ -295,6 +296,7 @@ img`
     . . . . . . . . . . . . c c c c 
     `
 ]
+// An array with multiple images of the sprite facing right
 let moveRight = [
 img`
     . . . . . . . . . . . f f f . . 
@@ -405,6 +407,7 @@ img`
     c c c c . . . . . . . . . . . . 
     `
 ]
+// An array of numbers to be used for the key
 arrayOfKeys = [
 1,
 2,
@@ -419,6 +422,7 @@ arrayOfKeys = [
 match = 0
 let randomKey = randint(0, arrayOfKeys.length - 1)
 keyAnswerNumber = arrayOfKeys[randomKey]
+// When left and down button is pressed, batHero sprite image changes to randomized images in moveLeft array. When right and up is pressed, batHero sprite image changes to randomized images in moveRight array
 forever(function () {
     if (controller.left.isPressed() || controller.down.isPressed()) {
         batHero.setImage(moveLeft._pickRandom())
