@@ -1,6 +1,6 @@
 function keyAnswer (input2: string) {
     for (let index = 0; index <= spellingBee.length - 1; index++) {
-        if (input2 == spellingBee[index]) {
+        if (input2 == "" + spellingBee[index]) {
             match += 1
         }
     }
