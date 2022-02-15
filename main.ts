@@ -1,6 +1,6 @@
 function keyAnswer (input2: string) {
-    for (let index = 0; index <= textList.length - 1; index++) {
-        if (input2 == textList[index]) {
+    for (let index = 0; index <= spellingBee.length - 1; index++) {
+        if (input2 == spellingBee[index]) {
             match += 1
         }
     }
@@ -12,19 +12,19 @@ function keyAnswer (input2: string) {
 }
 // Asks for user input through function keyAnswer after player batHero overlaps a selected tile
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, location) {
-    keyAnswer(game.askForString("Input a color from the key", 7))
+    keyAnswer(game.askForString("Input a color from the key"))
     pause(1000)
 })
 // Displays keyAnswerNumber on screen after the player batHero overlaps projectile key
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
     for (let index = 0; index <= 5; index++) {
-        game.splash("Your Key is: ", textList[index])
+        game.splash("Your Key is: ", spellingBee[index])
         pause(200)
     }
     key.destroy()
 })
 let match = 0
-let textList: string[] = []
+let spellingBee: string[] = []
 let key: Sprite = null
 info.startCountdown(30)
 scene.setBackgroundImage(img`
@@ -412,7 +412,7 @@ img`
     c c c c . . . . . . . . . . . . 
     `
 ]
-textList = [
+spellingBee = [
 "esquamulose",
 "smaragdine",
 "liaison",
