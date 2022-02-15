@@ -24,7 +24,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, ot
     key.destroy()
 })
 let match = 0
-let wordList: string[] = []
+let wordList: number[] = []
 let key: Sprite = null
 info.startCountdown(30)
 scene.setBackgroundImage(img`
