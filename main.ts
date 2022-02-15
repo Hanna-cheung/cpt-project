@@ -1,7 +1,6 @@
-// This function loops through arrayOfKeys to check the user input. If input is equal to the key answer, match is updated by 1, which would result in a winning game screen; otherwise, it would return a losing game screen.
-function keyAnswer (input2: number) {
-    for (let index = 0; index <= arrayOfVariables.length - 1; index++) {
-        if (input2 == arrayOfVariables[index]) {
+function keyAnswer (input2: string) {
+    for (let index = 0; index <= wordList.length - 1; index++) {
+        if (input2 == wordList[index]) {
             match += 1
         }
     }
@@ -13,19 +12,20 @@ function keyAnswer (input2: number) {
 }
 // Asks for user input through function keyAnswer after player batHero overlaps a selected tile
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, location) {
-    keyAnswer(game.askForNumber("Input 1 of the numbers from the key", 1))
+    keyAnswer(game.askForString("Input a color from the key", 7))
     pause(1000)
 })
 // Displays keyAnswerNumber on screen after the player batHero overlaps projectile key
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
-    game.splash("Your Key is: ", "" + key1 + key2 + key3)
-    pause(2000)
+    for (let index = 0; index <= 5; index++) {
+        game.splash("Your Key is: ", wordList[index])
+        pause(200)
+    }
+    key.destroy()
 })
-let arrayOfVariables: number[] = []
-let key3 = 0
-let key2 = 0
-let key1 = 0
 let match = 0
+let wordList: string[] = []
+let key: Sprite = null
 info.startCountdown(30)
 scene.setBackgroundImage(img`
     dddddddddddddddddddddddddddddddddddddddddddddddddddddddddbdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
@@ -150,7 +150,7 @@ scene.setBackgroundImage(img`
     dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
     `)
 tiles.setTilemap(tilemap`level1`)
-let key = sprites.create(img`
+key = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . 5 5 5 5 5 . . . . . 
     . . . . . . 5 4 4 4 4 . . . . . 
@@ -412,23 +412,15 @@ img`
     c c c c . . . . . . . . . . . . 
     `
 ]
-// An array of numbers to be used for the key
-let arrayOfKeys = [
-1,
-2,
-3,
-4,
-5,
-6,
-7,
-8,
-9
+wordList = [
+"esquamulose",
+"smaragdine",
+"liaison",
+"pochemuchka",
+"chiaroscurist",
+"sanctimonious"
 ]
 match = 0
-key1 = arrayOfKeys._pickRandom()
-key2 = arrayOfKeys._pickRandom()
-key3 = arrayOfKeys._pickRandom()
-arrayOfVariables = [key1, key2, key3]
 // While left and down button is pressed, batHero sprite image changes to randomized images in moveLeft array. While right and up is pressed, batHero sprite image changes to randomized images in moveRight array
 forever(function () {
     if (controller.left.isPressed() || controller.down.isPressed()) {
