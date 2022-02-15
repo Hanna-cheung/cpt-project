@@ -1,6 +1,6 @@
 function keyAnswer (input2: string) {
-    for (let index = 0; index <= wordList.length - 1; index++) {
-        if (input2 == wordList[index]) {
+    for (let index = 0; index <= textList.length - 1; index++) {
+        if (input2 == textList[index]) {
             match += 1
         }
     }
@@ -18,13 +18,13 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, l
 // Displays keyAnswerNumber on screen after the player batHero overlaps projectile key
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
     for (let index = 0; index <= 5; index++) {
-        game.splash("Your Key is: ", wordList[index])
+        game.splash("Your Key is: ", textList[index])
         pause(200)
     }
     key.destroy()
 })
 let match = 0
-let wordList: number[] = []
+let textList: string[] = []
 let key: Sprite = null
 info.startCountdown(30)
 scene.setBackgroundImage(img`
@@ -412,7 +412,7 @@ img`
     c c c c . . . . . . . . . . . . 
     `
 ]
-wordList = [
+textList = [
 "esquamulose",
 "smaragdine",
 "liaison",
