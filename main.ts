@@ -1,9 +1,11 @@
 function keyAnswer (input2: string) {
+    // If user input matches with any of the words on spellingBee list, the variable match changes from 0 to 1.
     for (let index = 0; index <= spellingBee.length - 1; index++) {
         if (input2 == "" + spellingBee[index]) {
             match += 1
         }
     }
+    // If match is 1, the user wins the game. Otherwise, the user loses the game
     if (match == 1) {
         game.over(true)
     } else {
@@ -12,10 +14,10 @@ function keyAnswer (input2: string) {
 }
 // Asks for user input through function keyAnswer after player batHero overlaps a selected tile
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, location) {
-    keyAnswer(game.askForString("Input a color from the key"))
+    keyAnswer(game.askForString("Spell a word from the key"))
     pause(1000)
 })
-// Displays keyAnswerNumber on screen after the player batHero overlaps projectile key
+// After player batHero overlaps projectile key, the vocabulary from index 0-5 of spellingBee list is splashed on screen. Once all words have been splashed, projectile key is destroyed
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
     for (let index = 0; index <= 5; index++) {
         game.splash("Your Key is: ", spellingBee[index])
@@ -23,6 +25,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, ot
     }
     key.destroy()
 })
+// All sprites and projectiles belong to Make Code gallery
 let match = 0
 let spellingBee: string[] = []
 let key: Sprite = null
@@ -412,6 +415,7 @@ img`
     c c c c . . . . . . . . . . . . 
     `
 ]
+// An array of vocabulary for the key
 spellingBee = [
 "esquamulose",
 "smaragdine",
